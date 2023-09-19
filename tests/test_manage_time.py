@@ -1,12 +1,15 @@
+import pytest
 from lib.manage_time import *
 
 """
 Given empty string
-It returns a 0
+It returns an error message
 """
 def test_empty_string():
-    result = manage_time("")
-    assert result == 0
+    with pytest.raises(Exception) as e:
+        manage_time("")
+    error_message = str(e.value)
+    assert error_message == "No text given!"
 
 """
 Given a string of words
